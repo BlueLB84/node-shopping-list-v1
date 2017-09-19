@@ -13,8 +13,6 @@ const app = express();
 // log the http layer
 app.use(morgan('common'));
 
-// we're going to add some items to ShoppingList
-// so there's some data to look at
 ShoppingList.create('beans', 2);
 ShoppingList.create('tomatoes', 3);
 ShoppingList.create('peppers', 4);
@@ -23,14 +21,12 @@ Recipes.create('chocolate milk', ['cocoa', 'milk', 'sugar']);
 Recipes.create('banana pancakes', ['banana', 'egg', 'vanilla']);
 Recipes.create('cornbread', ['flour', 'cornmeal', 'sugar', 'egg', 'salt', 'mayonaise', 'milk', 'baking powder', 'baking soda']);
 
-// when the root of this router is called with GET, return
-// all current ShoppingList items
+// return all current ShoppingList items
 app.get('/shopping-list', (req, res) => {
   res.json(ShoppingList.get());
 });
 
-// when the root of this router is called with GET, return
-// all current Recipes items
+// return all current Recipes items
 app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
 });
